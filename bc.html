@@ -1,0 +1,205 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="dizajn.css">
+<link href="c3-0.4.11/c3.css" rel="stylesheet" type="text/css">
+<script src="c3-0.4.11/d3.min.js" charset="utf-8"></script>
+<script src="c3-0.4.11/c3.min.js"></script>
+</head>
+<body>  
+    <img src="obr/close.png" alt="close.png" id="close" onclick="window.close()">
+  <script src="jquery.js">  </script>
+  <script type="text/javascript" src="socket.io.js"></script>
+  <script src="triedy.js">  </script>
+  <script src="nastavenia.js">  </script>
+  <script src="graf.js">  </script>
+
+   <script> 
+   function getID(){
+        var adresa=window.location.toString();
+        var vyskyt = adresa.indexOf("?");
+        var uzivatel_id=adresa.substring(vyskyt+1);
+    return uzivatel_id;
+    }
+    // function CreateCloseWindow(){
+    //     var close=document.createElement("img");
+    //     close.setAttribute("src","obr/close.png")
+    //     close.setAttribute("id","close");
+    //     close.setAttribute("onclick","CloseWindow()");
+    //     document.body.appendChild(close);
+    // }
+    // CreateCloseWindow();
+    function CloseWindow(){
+        window.close();
+    }
+    var jeToUcitel=false;
+    socket.emit('pripojil_sa_id',getID());
+
+
+
+    socket.on('vyhodnotJeUcitel',function(jeUcitel){
+      jeToUcitel=jeUcitel;
+      if (jeUcitel){
+        var navigacia =document.createElement("div")  ;
+        navigacia.setAttribute("id","navigacia");
+        var ukazUvodButton=document.createElement("div")  ;
+        ukazUvodButton.setAttribute("id","ukazUvodButton");
+        ukazUvodButton.setAttribute("width","100px");
+        ukazUvodButton.setAttribute("alt","spusti zle nacitany");
+        var imgback=document.createElement("img")  ;
+        imgback.setAttribute("src","obr/back.png");
+        imgback.setAttribute("onclick","spat()");
+        imgback.setAttribute("alt","nastav zle nacitany");
+        navigacia.appendChild(imgback);
+        
+        var nastavButton=document.createElement("img")  ;
+        nastavButton.setAttribute("id","nastavButton");
+        nastavButton.setAttribute("src","obr/nastav.png");
+        nastavButton.setAttribute("width","100px");
+        nastavButton.setAttribute("alt","nastav zle nacitany");
+        nastavButton.setAttribute("onclick","Vykreslinastavenia()");
+        nastavButton.setAttribute("tabindex","0");
+        navigacia.appendChild(nastavButton);
+        
+        var grafButton=document.createElement("img")  ;
+        grafButton.setAttribute("id","grafButton");
+        grafButton.setAttribute("width","100px");
+        grafButton.setAttribute("onclick","Vykresligraph()");
+        grafButton.setAttribute("alt","graf zle nacitany");
+        grafButton.setAttribute("src","obr/graph.png");
+        grafButton.setAttribute("tabindex","0");  
+        navigacia.appendChild(grafButton);
+        
+        var hraButton=document.createElement("img")  ;
+        hraButton.setAttribute("id","hraButton");
+        hraButton.setAttribute("width","100px");
+        hraButton.setAttribute("onclick","Vykreslihru()");
+        hraButton.setAttribute("alt","obrazok hra zle nacitany");
+        hraButton.setAttribute("src","obr/hra.png");
+        hraButton.setAttribute("tabindex","0");  
+        navigacia.appendChild(hraButton);      
+         
+        document.body.appendChild(navigacia);
+        var uvod=document.createElement("section")  ;
+        uvod.setAttribute("id","uvod");
+        uvod.setAttribute("style","height:"+ window.innerHeight+"px;");
+        uvod.setAttribute("style","width:30%");
+        
+        var Jednotlivec=document.createElement("img")  ;
+        Jednotlivec.setAttribute("id","Jednotlivec");
+        Jednotlivec.setAttribute("width","40%");
+        Jednotlivec.setAttribute("onclick","NastavFormu(1)");
+        Jednotlivec.setAttribute("alt","jednotlivec zle nacitany");
+        Jednotlivec.setAttribute("src","obr/single.png");
+        Jednotlivec.setAttribute("tabindex","0");  
+        uvod.appendChild(Jednotlivec);
+
+        var skupina=document.createElement("img")  ;
+        skupina.setAttribute("id","skupina");
+        skupina.setAttribute("width","55%");
+        skupina.setAttribute("onclick","NastavFormu(2)");
+        skupina.setAttribute("alt","skupina zle nacitany");
+        skupina.setAttribute("src","obr/group.png");
+        skupina.setAttribute("tabindex","0");  
+        uvod.appendChild(skupina);
+
+        var id4x4=document.createElement("img")  ;
+        id4x4.setAttribute("id","id4x4");
+        id4x4.setAttribute("width","23%");
+        id4x4.setAttribute("onclick","NastavRozmery(4)");
+        id4x4.setAttribute("alt","4x4 zle nacitany");
+        id4x4.setAttribute("src","obr/cisla/4x4.png");
+        id4x4.setAttribute("tabindex","0");  
+        uvod.appendChild(id4x4);
+        
+
+        var id5x5=document.createElement("img")  ;
+        id5x5.setAttribute("id","id5x5");
+        id5x5.setAttribute("width","23%");
+        id5x5.setAttribute("onclick","NastavRozmery(5)");
+        id5x5.setAttribute("alt","id5x5 zle nacitany");
+        id5x5.setAttribute("src","obr/cisla/5x5.png");
+        id5x5.setAttribute("tabindex","0");  
+        uvod.appendChild(id5x5);
+
+        var id6x6=document.createElement("img")  ;
+        id6x6.setAttribute("id","id6x6");
+        id6x6.setAttribute("width","23%");
+        id6x6.setAttribute("onclick","NastavRozmery(6)");
+        id6x6.setAttribute("alt","6x6 zle nacitany");
+        id6x6.setAttribute("src","obr/cisla/6x6.png");
+        id6x6.setAttribute("tabindex","0");  
+        uvod.appendChild(id6x6);
+        
+        var id7x7=document.createElement("img")  ;
+        id7x7.setAttribute("id","id7x7");
+        id7x7.setAttribute("width","23%");
+        id7x7.setAttribute("onclick","NastavRozmery(7)");
+        id7x7.setAttribute("alt","7x7 zle nacitany");
+        id7x7.setAttribute("src","obr/cisla/7x7.png");
+        id7x7.setAttribute("tabindex","0");  
+        uvod.appendChild(id7x7);
+        
+        var zvieraImg = document.createElement("img");
+        zvieraImg.setAttribute("id", "zvierata");
+        zvieraImg.setAttribute("src", "obr/zvierata.png");
+        zvieraImg.setAttribute("width", "43%");
+        zvieraImg.setAttribute("alt", "zviera zle nacitane");
+        zvieraImg.setAttribute("onclick", "NastavTyp(1)");
+        zvieraImg.setAttribute("tabindex", "0");
+        uvod.appendChild(zvieraImg);
+
+        var slovaImg = document.createElement("img");
+        slovaImg.setAttribute("id", "slova");
+        slovaImg.setAttribute("src", "obr/slova.png");
+        slovaImg.setAttribute("width", "43%");
+        slovaImg.setAttribute("alt", "slova zle nacitane");
+        slovaImg.setAttribute("onclick", "NastavTyp(2)");
+        slovaImg.setAttribute("tabindex", "0");
+        uvod.appendChild(slovaImg);
+
+        var spustiB = document.createElement("button");
+        spustiB.setAttribute("id", "spusti");
+        spustiB.setAttribute("src", "obr/spusti.png");
+        spustiB.setAttribute("alt", "spusti zle nacitany");
+        spustiB.setAttribute("onclick", "spustiNovuHru()");
+        spustiB.innerHTML = "<b>spusti</b>";
+        uvod.appendChild(spustiB);
+        document.body.appendChild(uvod);
+      
+    }else{
+      var cakaj=document.createElement("img");
+      cakaj.setAttribute("id","cakaj");
+      cakaj.setAttribute("src","obr/cakaj.gif");
+      cakaj.setAttribute("width","300px");
+      cakaj.setAttribute("heght","300px");
+      document.body.appendChild(cakaj);      
+    }
+  });
+socket.on('NovaHra',function(pole,typHry,Rozmery){
+      console.log(typHry);
+      NastavRozmery(Rozmery);
+      NastavTyp(typHry);
+      VygenerovanePole=pole;
+      if (!jeToUcitel){
+        var cakajE = document.getElementById("cakaj");
+        if (cakajE != undefined) {
+         document.body.removeChild(document.getElementById("cakaj"));
+        }
+      }
+      if (typHry==2){
+        vykresliKartyDB();
+      }
+      else if (typHry==1){
+        vykresliZvierataDB();
+      }
+    });
+  </script>
+</body>
+
+</html> 
+
+
+
