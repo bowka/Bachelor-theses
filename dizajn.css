@@ -1,0 +1,126 @@
+body{
+	background-color: #6495ED;
+}
+
+section{
+	margin: auto;
+    width: 50%;
+    border: 13px solid white;
+    padding: 20px;
+}
+img:focus {
+    background-color: white;
+    border-radius: 25px;
+}
+#navigacia{
+	position: fixed;
+	z-index: 2;
+}
+#hra div p{	
+	margin: 0;
+	}
+#hra div{	
+	position: relative;
+	float:left;
+	text-align: center;
+	vertical-align: middle;
+}
+#close{
+	position: relative;
+	float: right;
+	width: 50px;
+}
+#hra {
+	position: relative;
+	display: inline-block;
+	float: right;
+}
+.bar {
+	width: 100%;
+	min-height: 30px;
+}
+#grafDieta{
+	background-color: white;
+	max-width: 500px;
+	/*margin-left: 30%;*/
+	/*z-index: -1;*/
+}
+.bar .spravne{
+	background-color: #0E5B2F;
+	height: 15px;
+}
+.bar .nespravne{
+	background-color: #F81433;
+	height: 15px;
+}
+ #graf{	
+ 	font-size: 15px;
+ 	color: white;
+ 	width:500px;
+  	margin:2px;
+  	vertical-align: bottom;
+  	box-shadow:2px 2px 1px  gray;
+	border: 1px solid black;
+}
+#containerGraf{
+	float: left;	
+	margin-left: 30%;
+}
+#grafZviera{
+	font-size: 15px;
+ 	color: white;
+ 	width:500px;
+  	margin:2px;
+  	vertical-align: bottom;
+  	box-shadow:2px 2px 1px  gray;
+	border: 1px solid black;
+	/*float: left;	
+	margin-left: 30%;	*/
+}
+#navigacia img{
+	display: block;
+	margin-bottom: 10px;
+}
+#uvod img{
+margin-bottom: 40px;	
+}
+#cakaj{
+	margin: auto;
+	display:block;
+	vertical-align: middle;
+}
+#spusti{
+	-moz-box-shadow:inset 0px 0px 2.5em 0.3em #23395e;
+	-webkit-box-shadow:inset 0px 0px 1.5em 0.3em #23395e;
+	box-shadow:inset 0px 0px 1.5em 0.3em #23395e;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2e466e), color-stop(1, #415989));
+	background:-moz-linear-gradient(top, #2e466e 5%, #415989 100%);
+	background:-webkit-linear-gradient(top, #2e466e 5%, #415989 100%);
+	background:-o-linear-gradient(top, #2e466e 5%, #415989 100%);
+	background:-ms-linear-gradient(top, #2e466e 5%, #415989 100%);
+	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e466e', endColorstr='#415989',GradientType=0);
+	background-color:#330031;
+	/*
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid white;
+	*/
+	display:inline-block;
+	cursor:pointer;
+	font-family:Arial;
+	font-size:1.5em;
+	padding:0.2em 0.2em;
+	text-shadow:0px 0.1em 0px #283966;
+
+	margin: auto;
+    display: block;
+    width: 5.0em;
+    height: 2.5em;
+    border-width: 0.5em;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+
+}
